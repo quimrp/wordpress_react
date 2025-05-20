@@ -1,5 +1,4 @@
 import React from 'react';
-import HeaderHero from '../components/HeaderHero';
 import Hero from '../components/Hero';
 import HeroFullWhite from '../components/HeroFullWhite';
 import ProductsSection from '../components/ProductsSection';
