@@ -9,7 +9,7 @@ const httpLink = createHttpLink({
   credentials: 'omit',
 });
 
-const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) => {
+const errorLink = onError(({ graphQLErrors, networkError, operation }) => {
   if (graphQLErrors) {
     for (let err of graphQLErrors) {
       console.error(
