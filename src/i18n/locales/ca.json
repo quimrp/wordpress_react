@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "title": "Finestres",
+    "subtitle": "alta eficiència energètica",
+    "description": "Fes el salt a l'última tecnologia en aïllament tèrmic a un preu increïble",
+    "cta": {
+      "budget": "Demana el teu pressupost",
+      "advantages": "veure les avantatges"
+    },
+    "providers": {
+      "title": "Per poder respondre als nostres compromisos només podem treballar amb els millors proveïdors."
+    }
+  },
+  "whatsapp": {
+    "title": "WhatsApp",
+    "section": {
+      "title": "Demana el teu pressupost per WhatsApp",
+      "description": "El nostre assistent virtual t'atendrà 24/7 amb només unes fotos i les mesures aproximades et donaré un pressupost ràpid i sense compromís.",
+      "cta": {
+        "whatsapp": "Anar a WhatsApp",
+        "more": "saber més"
+      }
+    },
+    "conversation": {
+      "bot_intro": "Hola! Sóc Windboot l'assistent virtual d'Instal Tancaments",
+      "user_request": "Volia demanar un pressupost",
+      "user_question": "Vull canviar les meves finestres i no sé quina és la millor opció",
+      "bot_response_1": "És clar, estic programat per ajudar-te.",
+      "bot_response_2": "Et demanaré les dades de les teves finestres i unes fotos. Després et comento les opcions que tens",
+      "bot_response_3": "Amb les dades que em donis et prepararé l'oferta a l'instant.",
+      "user_thanks": "Gràcies."
+    }
+  },
+  "ventanas": {
+    "title": "Característiques de les nostres finestres",
+    "features": {
+      "title": "quan saps el que necessites, triar bé és fàcil.",
+      "subtitle": "La nostra finestra més eficient",
+      "intro": "Si ja tens clar que triar una finestra poc eficient és un error, és moment de fer el pas cap a una cosa millor.",
+      "push": {
+        "name": "Aïllament tèrmic avançat.",
+        "description": "Evita pèrdues d'energia i millora el confort de la teva llar els 365 dies de l'any."
+      },
+      "ssl": {
+        "name": "Tractament solar intel·ligent.",
+        "description": "Controla l'entrada de llum i calor per mantenir sempre un ambient equilibrat."
+      },
+      "db": {
+        "name": "Durabilitat i fiabilitat garantides.",
+        "description": "Finestres dissenyades per durar, sense perdre rendiment amb el pas del temps."
+      },
+      "imageAlt": "El meu producte"
+    }
+  }
+} 

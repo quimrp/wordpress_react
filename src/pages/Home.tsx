@@ -5,15 +5,15 @@ import ProductsSection from '../components/ProductsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import Footer from '../components/Footer';
 import TaiwindTest from '../components/taiwind_test';
-import WhatsAppChatMock from '../components/whatappBot';
+import Features from '../components/Features';
 
 const Home: React.FC = () => {
   return (
     <>
       <main>
         <Hero />
+        <Features />
         <TaiwindTest />
-        <WhatsAppChatMock />
         <HeroFullWhite />
         <ProductsSection />
         <TestimonialsSection />

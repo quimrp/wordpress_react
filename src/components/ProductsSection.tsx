@@ -21,14 +21,14 @@ const products = [
 const ProductsSection: React.FC = () => (
   <section id="productos" className="py-16 bg-white">
     <div className="container mx-auto px-4">
-      <h3 className="text-3xl font-bold text-center mb-10 text-blue-800">Nuestros Productos</h3>
+      <h3 className="text-3xl font-bold text-center mb-10 text-[var(--primary-color)]">Nuestros Productos</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {products.map((product, idx) => (
-          <div key={idx} className="bg-blue-50 rounded-lg shadow-lg p-6 flex flex-col items-center">
+          <div key={idx} className="bg-[var(--primary-color-light)]/10 rounded-lg shadow-lg p-6 flex flex-col items-center">
             <img src={product.image} alt={product.title} className="w-full h-40 object-cover rounded mb-4" />
-            <h4 className="text-xl font-semibold mb-2 text-blue-900">{product.title}</h4>
-            <p className="text-blue-700 mb-4 text-center">{product.description}</p>
-            <button className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">Ver más</button>
+            <h4 className="text-xl font-semibold mb-2 text-[var(--primary-color-dark)]">{product.title}</h4>
+            <p className="text-[var(--primary-color)] mb-4 text-center">{product.description}</p>
+            <button className="bg-[var(--primary-color)] text-white px-4 py-2 rounded hover:bg-[var(--primary-color-dark)] transition">Ver más</button>
           </div>
         ))}
       </div>

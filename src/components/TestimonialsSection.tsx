@@ -19,15 +19,15 @@ const testimonials = [
 ];
 
 const TestimonialsSection: React.FC = () => (
-  <section id="testimonios" className="py-16 bg-blue-50">
+  <section id="testimonios" className="py-16 bg-[var(--primary-color-light)]/10">
     <div className="container mx-auto px-4">
-      <h3 className="text-3xl font-bold text-center mb-10 text-blue-800">Testimonios</h3>
+      <h3 className="text-3xl font-bold text-center mb-10 text-[var(--primary-color)]">Testimonios</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {testimonials.map((testimonial, idx) => (
           <div key={idx} className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center">
-            <img src={testimonial.avatar} alt={testimonial.name} className="w-20 h-20 rounded-full mb-4 border-4 border-blue-200" />
+            <img src={testimonial.avatar} alt={testimonial.name} className="w-20 h-20 rounded-full mb-4 border-4 border-[var(--primary-color-light)]" />
             <p className="text-gray-700 italic mb-4 text-center">"{testimonial.text}"</p>
-            <span className="font-semibold text-blue-900">{testimonial.name}</span>
+            <span className="font-semibold text-[var(--primary-color-dark)]">{testimonial.name}</span>
           </div>
         ))}
       </div>

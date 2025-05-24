@@ -1,28 +1,61 @@
 import { useEffect, useState, useRef } from "react";
+import { useTranslation } from 'react-i18next';
 
 interface Message {
   from: "bot" | "user";
   text: string;
 }
 
-const conversation: Message[] = [
-  { from: "bot", text: "Hola! soy Windboot el asistente virtual de Instal Tancaments" },
-  { from: "user", text: "Quería pedir un presupuesto" },
-  { from: "user", text: "Quiero cambiar mis ventanas y no sé cuál es la mejor opción" },
-  { from: "bot", text: "Claro, estoy programado para ayudarte." },
-  { from: "bot", text: "Te voy a pedir los datos de tus ventanas y unas fotos. Después te comento las opciones que tienes" },
-  { from: "bot", text: "Con los datos que me des te prepararé la oferta al instante." },
-  { from: "user", text: "Gracias." },
-];
-
 const TYPING_DELAY = 1500;
 const MESSAGE_DELAY = 1000;
 
 export default function WhatsAppChatAuto() {
+  const { t } = useTranslation();
   const [displayedMessages, setDisplayedMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [index, setIndex] = useState(0);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  const conversation: Message[] = [
+    { from: "bot", text: t('whatsapp.conversation.bot_intro') },
+    { from: "user", text: t('whatsapp.conversation.user_request') },
+    { from: "user", text: t('whatsapp.conversation.user_question') },
+    { from: "bot", text: t('whatsapp.conversation.bot_response_1') },
+    { from: "bot", text: t('whatsapp.conversation.bot_response_2') },
+    { from: "bot", text: t('whatsapp.conversation.bot_response_3') },
+    { from: "user", text: t('whatsapp.conversation.user_thanks') },
+  ];
+
+  const startAnimation = () => {
+    setDisplayedMessages([]);
+    setIndex(0);
+    setIsTyping(false);
+  };
+
+  useEffect(() => {
+    // Configurar el Intersection Observer
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startAnimation();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (chatContainerRef.current) {
+      observerRef.current.observe(chatContainerRef.current);
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (index >= conversation.length) {
@@ -47,7 +80,7 @@ export default function WhatsAppChatAuto() {
       }, MESSAGE_DELAY);
       return () => clearTimeout(userTimeout);
     }
-  }, [index]);
+  }, [index, conversation]);
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -59,14 +92,14 @@ export default function WhatsAppChatAuto() {
   }, [displayedMessages, isTyping]);
 
   return (
-    <div className="w-[316px] h-[684px] bg-white rounded-[36px] shadow-lg border border-gray-300 overflow-hidden flex flex-col">
-      <div className="bg-green-600 text-white py-3 px-4 font-semibold text-base">
-        WhatsApp
+    <div className="w-[280px] h-[580px] bg-white rounded-[36px] shadow-lg border border-gray-300 overflow-hidden flex flex-col">
+      <div className="bg-green-600 text-white py-2.5 px-4 font-semibold text-sm">
+        {t('whatsapp.title')}
       </div>
 
       <div
         ref={chatContainerRef}
-        className="flex-1 p-4 space-y-3 bg-whatsapp-pattern bg-repeat bg-[length:300px_300px] select-none overflow-hidden"
+        className="flex-1 p-3 space-y-2 bg-whatsapp-pattern bg-repeat bg-[length:300px_300px] select-none overflow-hidden"
       >
         {displayedMessages.map((msg, i) => (
           <div
@@ -121,7 +154,7 @@ function BotAvatar() {
 function UserAvatar() {
   return (
     <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-xs text-white">
-      🧑
+      ��
     </div>
   );
 }

@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "title": "Ventanas",
+    "subtitle": "alta eficiencia energética",
+    "description": "Da el salto a la última tecnología en aislamiento térmico a un precio increíble",
+    "cta": {
+      "budget": "Pide tu presupuesto",
+      "advantages": "ver las ventajas"
+    },
+    "providers": {
+      "title": "Para poder responder a nuestros compromisos solo podemos trabajar con los mejores proveedores."
+    }
+  },
+  "whatsapp": {
+    "title": "WhatsApp",
+    "section": {
+      "title": "Pide tu presupuesto por WhatsApp",
+      "description": "Nuestro asistente virtual te atenderá 24/7 con solo unas fotos y las medidas aproximadas te daré un presupuesto rápido y sin compromiso.",
+      "cta": {
+        "whatsapp": "Ir a WhatsApp",
+        "more": "saber más"
+      }
+    },
+    "conversation": {
+      "bot_intro": "¡Hola! Soy Windboot el asistente virtual de Instal Tancaments",
+      "user_request": "Quería pedir un presupuesto",
+      "user_question": "Quiero cambiar mis ventanas y no sé cuál es la mejor opción",
+      "bot_response_1": "Claro, estoy programado para ayudarte.",
+      "bot_response_2": "Te voy a pedir los datos de tus ventanas y unas fotos. Después te comento las opciones que tienes",
+      "bot_response_3": "Con los datos que me des te prepararé la oferta al instante.",
+      "user_thanks": "Gracias."
+    }
+  },
+  "ventanas": {
+    "title": "Características de nuestras ventanas",
+    "features": {
+      "title": "cuando sabes lo que necesitas, elegir bien es fácil.",
+      "subtitle": "Nuestra ventana más eficiente",
+      "intro": "Si ya tienes claro que elegir una ventana poco eficiente es un error, es momento de dar el paso hacia algo mejor.",
+      "push": {
+        "name": "Aislamiento térmico avanzado.",
+        "description": "Evita pérdidas de energía y mejora el confort de tu hogar los 365 días del año."
+      },
+      "ssl": {
+        "name": "Tratamiento solar inteligente.",
+        "description": "Controla la entrada de luz y calor para mantener siempre un ambiente equilibrado."
+      },
+      "db": {
+        "name": "Durabilidad y fiabilidad garantizadas.",
+        "description": "Ventanas diseñadas para durar, sin perder rendimiento con el paso del tiempo."
+      },
+      "imageAlt": "Mi producto"
+    }
+  }
+} 

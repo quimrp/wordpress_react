@@ -14,7 +14,7 @@ const HeroFullWhite: React.FC = () => (
           Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
           quasi. In deleniti eaque aut repudiandae et a id nisi.
         </p>
-        <button className="px-8 py-3 bg-blue-700 text-white rounded-lg font-semibold shadow hover:bg-blue-800 transition">
+        <button className="px-8 py-3 bg-[var(--primary-color)] text-white rounded-lg font-semibold shadow hover:bg-[var(--primary-color-dark)] transition">
           Get Started
         </button>
       </div>
