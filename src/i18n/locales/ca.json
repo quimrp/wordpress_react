@@ -33,6 +33,45 @@
   },
   "ventanas": {
     "title": "Característiques de les nostres finestres",
+    "subtitulo": "Tria la que millor s'adapta a tu",
+    "EcoPrime 700": {
+      "nombre": "EcoPrime 700",
+      "descripcion": "La finestra bàsica sense extres que l'encarreguin."
+    },
+    "EcoPrime 760": {
+      "nombre": "EcoPrime 760",
+      "descripcion": "Una finestra amb eficiència millorada."
+    },
+    "EcoPrime 820": {
+      "nombre": "EcoPrime 820",
+      "descripcion": "La millor opció en aïllament i prestacions."
+    },
+    "secciones": {
+      "Perfileria": "Perfilería",
+      "VIDRIO": "Vidre",
+      "INSTALACION": "Instal·lació",
+      "GARANTIA": "Garantia"
+    },
+    "campos": {
+      "Marca": "Marca",
+      "Color": "Color",
+      "Serie": "Sèrie",
+      "Marco": "Marc",
+      "Triple Junta": "Triple Junta",
+      "Transmitancia térmica Uf": "Transmitància tèrmica Uf",
+      "Cámara": "Cambra",
+      "Triple Vidrio": "Triple Vidre",
+      "Intercalario Warm Edge": "Intercalari Warm Edge",
+      "Tratamiento Térmico": "Tractament Tèrmic",
+      "Tratamiento Solar": "Tractament Solar",
+      "Puertas y balconeras de seguridad": "Portes i balconeres de seguretat",
+      "Espuma de alta densidad": "Escuma d'alta densitat",
+      "Tapajuntas clipado de pvc": "Tapajuntes clipat de PVC",
+      "Acabados de Paleteria": "Acabats de Paleteria",
+      "Sello Aenor del Perfil": "Segell Aenor del Perfil",
+      "Sello Aenor de la Ventana": "Segell Aenor de la Finestra",
+      "10 años garantia color": "10 anys garantia de color"
+    },
     "features": {
       "title": "quan saps el que necessites, triar bé és fàcil.",
       "subtitle": "La nostra finestra més eficient",
@@ -50,6 +89,53 @@
         "description": "Finestres dissenyades per durar, sense perdre rendiment amb el pas del temps."
       },
       "imageAlt": "El meu producte"
+    },
+    "mejor_opcion": "MILLOR OPCIÓ",
+    "mas_info": "+ info",
+    "tooltips": {
+      "Triple Junta": "Millora l'hermeticitat",
+      "Transmitancia térmica Uf": "El número menor és el major aïllament",
+      "Cámara": "El que millor funciona és de mínim 16 mm",
+      "Triple Vidrio": "Millora molt l'aïllament",
+      "Intercalario Warm Edge": "Millora un 10% l'aïllament",
+      "Tratamiento Térmico": "Millora molt l'aïllament",
+      "Tratamiento Solar": "Filtra la calor produïda per la radiació solar",
+      "Puertas y balconeras de seguridad": "Evita danys per ruptura i accidents",
+      "Espuma de alta densidad": "Millora l'aïllament entre la finestra i el mur",
+      "Tapajuntas clipado de pvc": "Permet aplicar millor l'escuma, no utilitzem tapajuntes d'alumini",
+      "Sello Aenor de la Ventana": "Exclusiu segell aenor de la finestra acabada"
+    }
+  },
+  "about": {
+    "title": "Sobre Nosaltres",
+    "subtitle": "Experts en finestres d'alta eficiència",
+    "description": "A Instal Tancaments portem més de 20 anys transformant llars amb solucions innovadores en finestres i tancaments.",
+    "values": {
+      "title": "Els Nostres Valors",
+      "quality": {
+        "title": "Qualitat Superior",
+        "description": "Treballam amb els millors materials i proveïdors del mercat per garantir l'excel·lència en cada instal·lació."
+      },
+      "experience": {
+        "title": "Experiència",
+        "description": "Més de dues dècades d'experiència ens avalen com a experts en el sector de la fusteria d'alumini i PVC."
+      },
+      "service": {
+        "title": "Servei Personalitzat",
+        "description": "Cada projecte és únic. Ens adaptem a les teves necessitats específiques per oferir-te la millor solució."
+      },
+      "innovation": {
+        "title": "Innovació Constant",
+        "description": "Sempre a l'avantguarda de les últimes tecnologies en eficiència energètica i disseny."
+      }
+    },
+    "team": {
+      "title": "El Nostre Equip",
+      "description": "Un equip de professionals altament qualificats compromesos amb l'excel·lència i la satisfacció del client."
+    },
+    "cta": {
+      "contact": "Contacta'ns",
+      "projects": "Veure Projectes"
     }
   }
 } 

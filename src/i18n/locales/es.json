@@ -33,6 +33,45 @@
   },
   "ventanas": {
     "title": "Características de nuestras ventanas",
+    "subtitulo": "Elige la que mejor se adapta a ti",
+    "EcoPrime 700": {
+      "nombre": "EcoPrime 700",
+      "descripcion": "La ventana básica sin extras que la encarezcan."
+    },
+    "EcoPrime 760": {
+      "nombre": "EcoPrime 760",
+      "descripcion": "Una ventana con eficiencia mejorada."
+    },
+    "EcoPrime 820": {
+      "nombre": "EcoPrime 820",
+      "descripcion": "La mejor opción en aislamiento y prestaciones."
+    },
+    "secciones": {
+      "Perfileria": "Perfilería",
+      "VIDRIO": "Vidrio",
+      "INSTALACION": "Instalación",
+      "GARANTIA": "Garantía"
+    },
+    "campos": {
+      "Marca": "Marca",
+      "Color": "Color",
+      "Serie": "Serie",
+      "Marco": "Marco",
+      "Triple Junta": "Triple Junta",
+      "Transmitancia térmica Uf": "Transmitancia térmica Uf",
+      "Cámara": "Cámara",
+      "Triple Vidrio": "Triple Vidrio",
+      "Intercalario Warm Edge": "Intercalario Warm Edge",
+      "Tratamiento Térmico": "Tratamiento Térmico",
+      "Tratamiento Solar": "Tratamiento Solar",
+      "Puertas y balconeras de seguridad": "Puertas y balconeras de seguridad",
+      "Espuma de alta densidad": "Espuma de alta densidad",
+      "Tapajuntas clipado de pvc": "Tapajuntas clipado de PVC",
+      "Acabados de Paleteria": "Acabados de Paletería",
+      "Sello Aenor del Perfil": "Sello Aenor del Perfil",
+      "Sello Aenor de la Ventana": "Sello Aenor de la Ventana",
+      "10 años garantia color": "10 años garantía color"
+    },
     "features": {
       "title": "cuando sabes lo que necesitas, elegir bien es fácil.",
       "subtitle": "Nuestra ventana más eficiente",
@@ -50,6 +89,53 @@
         "description": "Ventanas diseñadas para durar, sin perder rendimiento con el paso del tiempo."
       },
       "imageAlt": "Mi producto"
+    },
+    "mejor_opcion": "MEJOR OPCIÓN",
+    "mas_info": "+ info",
+    "tooltips": {
+      "Triple Junta": "Mejora la hermeticidad",
+      "Transmitancia térmica Uf": "El número menor es el mayor aislamiento",
+      "Cámara": "Lo que mejor funciona es de mínimo 16 mm",
+      "Triple Vidrio": "Mejora mucho el aislamiento",
+      "Intercalario Warm Edge": "Mejora un 10% el aislamiento",
+      "Tratamiento Térmico": "Mejora mucho el aislamiento",
+      "Tratamiento Solar": "Filtra el calor producido por la radiación solar",
+      "Puertas y balconeras de seguridad": "Evita daños por rotura y accidentes",
+      "Espuma de alta densidad": "Mejora el aislamiento entre la ventana y el muro",
+      "Tapajuntas clipado de pvc": "Permite aplicar mejor la espuma, no usamos tapajuntas de aluminio",
+      "Sello Aenor de la Ventana": "Exclusivo sello aenor de la ventana acabada"
+    }
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "subtitle": "Expertos en ventanas de alta eficiencia",
+    "description": "En Instal Tancaments llevamos más de 20 años transformando hogares con soluciones innovadoras en ventanas y cerramientos.",
+    "values": {
+      "title": "Nuestros Valores",
+      "quality": {
+        "title": "Calidad Superior",
+        "description": "Trabajamos con los mejores materiales y proveedores del mercado para garantizar la excelencia en cada instalación."
+      },
+      "experience": {
+        "title": "Experiencia",
+        "description": "Más de dos décadas de experiencia nos avalan como expertos en el sector de la carpintería de aluminio y PVC."
+      },
+      "service": {
+        "title": "Servicio Personalizado",
+        "description": "Cada proyecto es único. Nos adaptamos a tus necesidades específicas para ofrecerte la mejor solución."
+      },
+      "innovation": {
+        "title": "Innovación Constante",
+        "description": "Siempre a la vanguardia de las últimas tecnologías en eficiencia energética y diseño."
+      }
+    },
+    "team": {
+      "title": "Nuestro Equipo",
+      "description": "Un equipo de profesionales altamente cualificados comprometidos con la excelencia y la satisfacción del cliente."
+    },
+    "cta": {
+      "contact": "Contáctanos",
+      "projects": "Ver Proyectos"
     }
   }
 } 

@@ -1,0 +1,141 @@
+{
+  "hero": {
+    "title": "Fenêtres",
+    "subtitle": "haute efficacité énergétique",
+    "description": "Faites le saut vers la dernière technologie d'isolation thermique à un prix incroyable",
+    "cta": {
+      "budget": "Demandez votre devis",
+      "advantages": "voir les avantages"
+    },
+    "providers": {
+      "title": "Pour répondre à nos engagements, nous ne pouvons travailler qu'avec les meilleurs fournisseurs."
+    }
+  },
+  "whatsapp": {
+    "title": "WhatsApp",
+    "section": {
+      "title": "Demandez votre devis via WhatsApp",
+      "description": "Notre assistant virtuel vous servira 24/7 avec juste quelques photos et des mesures approximatives pour vous donner un devis rapide et sans engagement.",
+      "cta": {
+        "whatsapp": "Aller sur WhatsApp",
+        "more": "en savoir plus"
+      }
+    },
+    "conversation": {
+      "bot_intro": "Bonjour ! Je suis Windboot, l'assistant virtuel d'Instal Tancaments",
+      "user_request": "Je voulais demander un devis",
+      "user_question": "Je veux changer mes fenêtres et je ne sais pas quelle est la meilleure option",
+      "bot_response_1": "Bien sûr, je suis programmé pour vous aider.",
+      "bot_response_2": "Je vais vous demander les données de vos fenêtres et quelques photos. Ensuite, je vous parlerai de vos options",
+      "bot_response_3": "Avec les données que vous fournirez, je préparerai votre offre instantanément.",
+      "user_thanks": "Merci."
+    }
+  },
+  "ventanas": {
+    "title": "Caractéristiques de nos fenêtres",
+    "subtitulo": "Choisissez celle qui vous convient le mieux",
+    "EcoPrime 700": {
+      "nombre": "EcoPrime 700",
+      "descripcion": "La fenêtre basique sans extras qui l'augmentent."
+    },
+    "EcoPrime 760": {
+      "nombre": "EcoPrime 760",
+      "descripcion": "Une fenêtre avec efficacité améliorée."
+    },
+    "EcoPrime 820": {
+      "nombre": "EcoPrime 820",
+      "descripcion": "La meilleure option en isolation et performances."
+    },
+    "secciones": {
+      "Perfileria": "Profil",
+      "VIDRIO": "Verre",
+      "INSTALACION": "Installation",
+      "GARANTIA": "Garantie"
+    },
+    "campos": {
+      "Marca": "Marque",
+      "Color": "Couleur",
+      "Serie": "Série",
+      "Marco": "Cadre",
+      "Triple Junta": "Triple Joint",
+      "Transmitancia térmica Uf": "Transmittance thermique Uf",
+      "Cámara": "Chambre",
+      "Triple Vidrio": "Triple Vitrage",
+      "Intercalario Warm Edge": "Intercalaire Warm Edge",
+      "Tratamiento Térmico": "Traitement Thermique",
+      "Tratamiento Solar": "Traitement Solaire",
+      "Puertas y balconeras de seguridad": "Portes et fenêtres de sécurité",
+      "Espuma de alta densidad": "Mousse haute densité",
+      "Tapajuntas clipado de pvc": "Couvre-joint PVC clipé",
+      "Acabados de Paleteria": "Finition de quincaillerie",
+      "Sello Aenor del Perfil": "Certification AENOR du Profil",
+      "Sello Aenor de la Ventana": "Certification AENOR de la Fenêtre",
+      "10 años garantia color": "10 ans de garantie de couleur"
+    },
+    "features": {
+      "title": "quand vous savez ce dont vous avez besoin, bien choisir est facile.",
+      "subtitle": "Notre fenêtre la plus efficace",
+      "intro": "Si vous êtes déjà clair que choisir une fenêtre inefficace est une erreur, il est temps de faire le pas vers quelque chose de mieux.",
+      "push": {
+        "name": "Isolation thermique avancée.",
+        "description": "Prévient la perte d'énergie et améliore le confort de votre maison 365 jours par an."
+      },
+      "ssl": {
+        "name": "Traitement solaire intelligent.",
+        "description": "Contrôle l'entrée de la lumière et de la chaleur pour maintenir un environnement équilibré à tout moment."
+      },
+      "db": {
+        "name": "Durabilité et fiabilité garanties.",
+        "description": "Fenêtres conçues pour durer, sans perdre de performance au fil du temps."
+      },
+      "imageAlt": "Mon produit"
+    },
+    "mejor_opcion": "MEILLEURE OPTION",
+    "mas_info": "+ info",
+    "tooltips": {
+      "Triple Junta": "Améliore l'étanchéité",
+      "Transmitancia térmica Uf": "Le nombre inférieur signifie une meilleure isolation",
+      "Cámara": "Le minimum de 16 mm fonctionne le mieux",
+      "Triple Vidrio": "Améliore considérablement l'isolation",
+      "Intercalario Warm Edge": "Améliore l'isolation de 10%",
+      "Tratamiento Térmico": "Améliore considérablement l'isolation",
+      "Tratamiento Solar": "Filtre la chaleur produite par le rayonnement solaire",
+      "Puertas y balconeras de seguridad": "Prévient les dommages par rupture et accidents",
+      "Espuma de alta densidad": "Améliore l'isolation entre la fenêtre et le mur",
+      "Tapajuntas clipado de pvc": "Permet une meilleure application de la mousse, nous n'utilisons pas de couvre-joints en aluminium",
+      "Sello Aenor de la Ventana": "Certification AENOR exclusive pour la fenêtre finie"
+    }
+  },
+  "about": {
+    "title": "À Propos",
+    "subtitle": "Experts en fenêtres haute efficacité",
+    "description": "Chez Instal Tancaments, nous transformons les foyers depuis plus de 20 ans avec des solutions innovantes en fenêtres et fermetures.",
+    "values": {
+      "title": "Nos Valeurs",
+      "quality": {
+        "title": "Qualité Supérieure",
+        "description": "Nous travaillons avec les meilleurs matériaux et fournisseurs du marché pour garantir l'excellence dans chaque installation."
+      },
+      "experience": {
+        "title": "Expérience",
+        "description": "Plus de deux décennies d'expérience nous confirment comme experts dans le secteur de la menuiserie aluminium et PVC."
+      },
+      "service": {
+        "title": "Service Personnalisé",
+        "description": "Chaque projet est unique. Nous nous adaptons à vos besoins spécifiques pour vous offrir la meilleure solution."
+      },
+      "innovation": {
+        "title": "Innovation Constante",
+        "description": "Toujours à l'avant-garde des dernières technologies en efficacité énergétique et design."
+      }
+    },
+    "team": {
+      "title": "Notre Équipe",
+      "description": "Une équipe de professionnels hautement qualifiés engagés dans l'excellence et la satisfaction client."
+    },
+    "cta": {
+      "contact": "Contactez-nous",
+      "projects": "Voir les Projets"
+    }
+  }
+} 

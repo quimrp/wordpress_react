@@ -1,25 +1,22 @@
 import React from 'react';
+import Layout from '../components/Layout'
 import Hero from '../components/Hero';
-import HeroFullWhite from '../components/HeroFullWhite';
-import ProductsSection from '../components/ProductsSection';
-import TestimonialsSection from '../components/TestimonialsSection';
-import Footer from '../components/Footer';
 import TaiwindTest from '../components/taiwind_test';
 import Features from '../components/Features';
+import AboutUs from '../components/AboutUs';
+import PriceTable from '../components/PriceTable';
+import FichaVentana from '../components/FichaVentana';
 
 const Home: React.FC = () => {
   return (
-    <>
-      <main>
-        <Hero />
-        <Features />
-        <TaiwindTest />
-        <HeroFullWhite />
-        <ProductsSection />
-        <TestimonialsSection />
-      </main>
-      <Footer />
-    </>
+    <Layout>
+      <Hero />
+      <Features />
+      <TaiwindTest />
+      <AboutUs />
+      <PriceTable />
+      <FichaVentana />
+    </Layout>
   );
 };
 

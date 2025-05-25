@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -14,9 +14,33 @@ const navigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = useTranslation();
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < 50) {
+        setShow(true); // Muestra el menú si está en el top
+        setLastScrollY(window.scrollY);
+        return;
+      }
+      if (window.scrollY < lastScrollY) {
+        setShow(true); // Scroll arriba
+      } else {
+        setShow(false); // Scroll abajo
+      }
+      setLastScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow">
+    <header
+      className={`sticky top-0 z-50 bg-white shadow transition-transform duration-300 ${
+        show ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">

@@ -10,7 +10,7 @@ const TYPING_DELAY = 1500;
 const MESSAGE_DELAY = 1000;
 
 export default function WhatsAppChatAuto() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [displayedMessages, setDisplayedMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [index, setIndex] = useState(0);
@@ -32,6 +32,11 @@ export default function WhatsAppChatAuto() {
     setIndex(0);
     setIsTyping(false);
   };
+
+  // Efecto para reiniciar la conversación cuando cambia el idioma
+  useEffect(() => {
+    startAnimation();
+  }, [i18n.language]);
 
   useEffect(() => {
     // Configurar el Intersection Observer
@@ -154,7 +159,7 @@ function BotAvatar() {
 function UserAvatar() {
   return (
     <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-xs text-white">
-      ��
+      👤
     </div>
   );
 }

@@ -1,0 +1,141 @@
+{
+  "hero": {
+    "title": "Windows",
+    "subtitle": "high energy efficiency",
+    "description": "Make the leap to the latest thermal insulation technology at an incredible price",
+    "cta": {
+      "budget": "Request your quote",
+      "advantages": "see the advantages"
+    },
+    "providers": {
+      "title": "To meet our commitments, we can only work with the best providers."
+    }
+  },
+  "whatsapp": {
+    "title": "WhatsApp",
+    "section": {
+      "title": "Request your quote via WhatsApp",
+      "description": "Our virtual assistant will serve you 24/7 with just a few photos and approximate measurements to give you a quick and no-obligation quote.",
+      "cta": {
+        "whatsapp": "Go to WhatsApp",
+        "more": "learn more"
+      }
+    },
+    "conversation": {
+      "bot_intro": "Hi! I'm Windboot, Instal Tancaments' virtual assistant",
+      "user_request": "I wanted to request a quote",
+      "user_question": "I want to change my windows and I don't know which is the best option",
+      "bot_response_1": "Of course, I'm programmed to help you.",
+      "bot_response_2": "I'll ask you for your windows' data and some photos. Then I'll tell you about your options",
+      "bot_response_3": "With the data you provide, I'll prepare your offer instantly.",
+      "user_thanks": "Thank you."
+    }
+  },
+  "ventanas": {
+    "title": "Our Windows Features",
+    "subtitulo": "Choose the one that best suits you",
+    "EcoPrime 700": {
+      "nombre": "EcoPrime 700",
+      "descripcion": "The basic window without expensive extras."
+    },
+    "EcoPrime 760": {
+      "nombre": "EcoPrime 760",
+      "descripcion": "A window with improved efficiency."
+    },
+    "EcoPrime 820": {
+      "nombre": "EcoPrime 820",
+      "descripcion": "The best option in insulation and performance."
+    },
+    "secciones": {
+      "Perfileria": "Frame",
+      "VIDRIO": "Glass",
+      "INSTALACION": "Installation",
+      "GARANTIA": "Warranty"
+    },
+    "campos": {
+      "Marca": "Brand",
+      "Color": "Color",
+      "Serie": "Series",
+      "Marco": "Frame",
+      "Triple Junta": "Triple Seal",
+      "Transmitancia térmica Uf": "Thermal Transmittance Uf",
+      "Cámara": "Chamber",
+      "Triple Vidrio": "Triple Glazing",
+      "Intercalario Warm Edge": "Warm Edge Spacer",
+      "Tratamiento Térmico": "Thermal Treatment",
+      "Tratamiento Solar": "Solar Treatment",
+      "Puertas y balconeras de seguridad": "Security Doors and Windows",
+      "Espuma de alta densidad": "High Density Foam",
+      "Tapajuntas clipado de pvc": "PVC Clipped Cover",
+      "Acabados de Paleteria": "Hardware Finishes",
+      "Sello Aenor del Perfil": "AENOR Profile Seal",
+      "Sello Aenor de la Ventana": "AENOR Window Seal",
+      "10 años garantia color": "10 Years Color Warranty"
+    },
+    "features": {
+      "title": "when you know what you need, choosing well is easy.",
+      "subtitle": "Our most efficient window",
+      "intro": "If you're already clear that choosing an inefficient window is a mistake, it's time to take the step towards something better.",
+      "push": {
+        "name": "Advanced thermal insulation.",
+        "description": "Prevents energy loss and improves your home's comfort 365 days a year."
+      },
+      "ssl": {
+        "name": "Smart solar treatment.",
+        "description": "Controls light and heat entry to maintain a balanced environment at all times."
+      },
+      "db": {
+        "name": "Guaranteed durability and reliability.",
+        "description": "Windows designed to last, without losing performance over time."
+      },
+      "imageAlt": "My product"
+    },
+    "mejor_opcion": "BEST OPTION",
+    "mas_info": "+ info",
+    "tooltips": {
+      "Triple Junta": "Improves airtightness",
+      "Transmitancia térmica Uf": "Lower number means better insulation",
+      "Cámara": "Minimum 16mm works best",
+      "Triple Vidrio": "Greatly improves insulation",
+      "Intercalario Warm Edge": "Improves insulation by 10%",
+      "Tratamiento Térmico": "Greatly improves insulation",
+      "Tratamiento Solar": "Filters heat from solar radiation",
+      "Puertas y balconeras de seguridad": "Prevents breakage and accidents",
+      "Espuma de alta densidad": "Improves insulation between window and wall",
+      "Tapajuntas clipado de pvc": "Allows better foam application, we don't use aluminum covers",
+      "Sello Aenor de la Ventana": "Exclusive AENOR seal for finished window"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Experts in high-efficiency windows",
+    "description": "At Instal Tancaments, we have been transforming homes for over 20 years with innovative window and enclosure solutions.",
+    "values": {
+      "title": "Our Values",
+      "quality": {
+        "title": "Superior Quality",
+        "description": "We work with the best materials and suppliers in the market to ensure excellence in every installation."
+      },
+      "experience": {
+        "title": "Experience",
+        "description": "More than two decades of experience endorse us as experts in the aluminum and PVC carpentry sector."
+      },
+      "service": {
+        "title": "Personalized Service",
+        "description": "Each project is unique. We adapt to your specific needs to offer you the best solution."
+      },
+      "innovation": {
+        "title": "Constant Innovation",
+        "description": "Always at the forefront of the latest technologies in energy efficiency and design."
+      }
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "A team of highly qualified professionals committed to excellence and customer satisfaction."
+    },
+    "cta": {
+      "contact": "Contact Us",
+      "projects": "View Projects"
+    }
+  }
+}
