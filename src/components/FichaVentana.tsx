@@ -1,7 +1,8 @@
-import { CheckIcon, XMarkIcon, InformationCircleIcon, StarIcon } from '@heroicons/react/24/outline';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
+import { CheckIcon, XMarkIcon, InformationCircleIcon, StarIcon } from '@heroicons/react/24/outline';
+import type { TFunction } from 'i18next';
+import { ventanasEjemplo } from './ventanasEjemplo';
 
 interface FichaItem {
   label: string;
@@ -41,17 +42,6 @@ function Valor({ value }: { value: React.ReactNode | boolean }) {
   return <span>{value}</span>;
 }
 
-// Utilidad para obtener el máximo número de secciones entre todas las fichas
-function getMaxSecciones() {
-  return Math.max(...ventanasEjemplo.map(v => v.secciones.length));
-}
-
-// Utilidad para obtener los títulos de sección en orden para alinear
-function getSeccionTitles() {
-  const allTitles = ventanasEjemplo.flatMap(v => v.secciones.map(s => s.titulo));
-  return Array.from(new Set(allTitles));
-}
-
 // Calcula la altura máxima de la cabecera entre todas las ventanas
 function getMaxHeaderHeight() {
   // Aproximación: badge (28px) + nombre (48px) + descripción (24px) + márgenes (16px)
@@ -65,7 +55,6 @@ export default function FichaVentana(props: Partial<FichaVentanaProps>) {
 
   // Si no recibe props, renderiza todas las fichas de ejemplo en grid centrado y ancho limitado
   if (!props.nombre && !props.imagen && !props.secciones) {
-    const seccionTitles = getSeccionTitles();
     return (
       <div className="max-w-7xl mx-auto w-full">
         <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-950 sm:text-6xl lg:text-pretty text-center mb-4">
@@ -75,7 +64,7 @@ export default function FichaVentana(props: Partial<FichaVentanaProps>) {
           {t('ventanas.subtitulo')}
         </p>
         <div className="grid md:grid-cols-3 gap-8 w-full">
-          {ventanasEjemplo.map((ventana) => (
+          {ventanasEjemplo.map((ventana: FichaVentanaProps) => (
             <div key={ventana.nombre} className="px-2 flex flex-col">
               <div className="bg-white rounded-xl shadow-lg p-6 w-full mx-auto mb-8 flex flex-col h-full [&_a]:text-[var(--secondary-color)] [&_a:hover]:text-[var(--secondary-color-dark)] [&_a:hover]:underline">
                 <div
@@ -98,16 +87,16 @@ export default function FichaVentana(props: Partial<FichaVentanaProps>) {
                 <div className="flex justify-center mb-4">
                   <img src={ventana.imagen} alt={t(`ventanas.${ventana.nombre}.nombre`)} width={150} height={150} />
                 </div>
-                {seccionTitles.map((titulo, idx) => {
-                  const sec = ventana.secciones.find(s => s.titulo === titulo);
+                {Array.from(new Set(ventanasEjemplo.flatMap((v: FichaVentanaProps) => v.secciones.map((s: FichaSeccion) => s.titulo)))).map((titulo: string) => {
+                  const sec = ventana.secciones.find((s: FichaSeccion) => s.titulo === titulo);
                   return (
                     <div key={titulo} className="mb-4 flex-1 flex flex-col">
                       <div className="bg-orange-400 text-white text-center font-semibold py-2 rounded mb-2">{t(`ventanas.secciones.${titulo}`)}</div>
                       {sec ? (
                         <table className="w-full h-full">
                           <tbody>
-                            {sec.items.map((item, i) => (
-                              <tr key={i} className="border-b last:border-none">
+                            {sec.items.map((item: FichaItem) => (
+                              <tr key={item.label} className="border-b last:border-none">
                                 <td className="py-2 font-medium">
                                   {t(`ventanas.campos.${item.label}`)}
                                   {item.tooltip && <Tooltip text={t(`ventanas.tooltips.${item.label}`, item.tooltip)} />}
@@ -139,7 +128,7 @@ export default function FichaVentana(props: Partial<FichaVentanaProps>) {
     );
   }
   // Si recibe props, renderiza solo una ficha
-  const { nombre, descripcion, imagen, secciones } = props as FichaVentanaProps;
+  const { nombre, imagen, secciones } = props as FichaVentanaProps;
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 w-full mx-auto mb-8 [&_a]:text-[var(--secondary-color)] [&_a:hover]:text-[var(--secondary-color-dark)] [&_a:hover]:underline">
       <div
@@ -193,159 +182,20 @@ export default function FichaVentana(props: Partial<FichaVentanaProps>) {
 }
 
 // Ejemplo de uso con dos ventanas:
-export const ventanasEjemplo: FichaVentanaProps[] = [
-  {
-    nombre: "EcoPrime 700",
-    descripcion: "La ventana básica sin extras que la encarezcan.",
-    imagen: "/wp-content/uploads/2023/09/veka_70.png.webp",
-    secciones: [
-      {
-        titulo: "Perfileria",
-        items: [
-          { label: "Marca", value: <a href="https://www.veka.es/"><img src="https://www.veka.es/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2020/03/logo-veka.png.webp" width={30} /></a> },
-          { label: "Color", value: "Blanco" },
-          { label: "Serie", value: <a href="https://www.veka.es/wp-content/uploads/2023/03/catalogo-softline-70-veka-doble-junta-recto-feb-23-esp.pdf">EcoPrime 700</a> },
-          { label: "Marco", value: "70 mm" },
-          { label: "Triple Junta", value: false, tooltip: "Mejora la hermeticidad" },
-          { label: "Transmitancia térmica Uf", value: "1,4 W/m2 K", tooltip: "El número menor es el mayor aislamiento" },
-        ]
-      },
-      {
-        titulo: "VIDRIO",
-        items: [
-          { label: "Marca", value: <a href="https://www.guardiansun.es/"><img src="/wp-content/uploads/2023/09/Guardian_Sun_Logo.png.webp" width={60} /></a> },
-          { label: "Cámara", value: "16 mm", tooltip: "Lo que mejor funciona es de mínimo 16 mm" },
-          { label: "Triple Vidrio", value: false, tooltip: "Mejora mucho el aislamiento" },
-          { label: "Intercalario Warm Edge", value: false, tooltip: "Mejora un 10% el aislamiento" },
-          { label: "Tratamiento Térmico", value: false, tooltip: "Mejora mucho el aislamiento" },
-          { label: "Tratamiento Solar", value: false, tooltip: "Filtra el calor producido por la radiación solar" },
-          { label: "Puertas y balconeras de seguridad", value: false, tooltip: "Evita daños por rotura y accidentes" },
-        ]
-      },
-      {
-        titulo: "INSTALACION",
-        items: [
-          { label: "Espuma de alta densidad", value: false, tooltip: "Mejora el aislamiento entre la ventana y el muro" },
-          { label: "Tapajuntas clipado de pvc", value: true, tooltip: "Permite aplicar mejor la espuma, no usamos tapajuntas de aluminio" },
-          { label: "Acabados de Paleteria", value: false },
-        ]
-      },
-      {
-        titulo: "GARANTIA",
-        items: [
-          { label: "Sello Aenor del Perfil", value: true },
-          { label: "Sello Aenor de la Ventana", value: true, tooltip: "Exclusivo sello aenor de la ventana acabada" },
-          { label: "10 años garantia color", value: true },
-        ]
-      },
-    ]
-  },
-  {
-    nombre: "EcoPrime 760",
-    descripcion: "Una ventana con eficiencia mejorada.",
-    imagen: "/wp-content/uploads/2023/09/veka_70.png.webp",
-    secciones: [
-      {
-        titulo: "Perfileria",
-        items: [
-          { label: "Marca", value: <a href="https://www.veka.es/"><img src="https://www.veka.es/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2020/03/logo-veka.png.webp" width={30} /></a> },
-          { label: "Color", value: "Blanco" },
-          { label: "Serie", value: <a href="https://www.veka.es/wp-content/uploads/2022/01/catalogo-ventanas-practicables-softline-76-veka.pdf">EcoPrime 760</a> },
-          { label: "Marco", value: "76 mm" },
-          { label: "Triple Junta", value: true, tooltip: "Mejora la hermeticidad" },
-          { label: "Transmitancia térmica Uf", value: "1,1 W/m2 K", tooltip: "El número menor es el mayor aislamiento" },
-        ]
-      },
-      {
-        titulo: "VIDRIO",
-        items: [
-          { label: "Marca", value: <a href="https://www.guardiansun.es/"><img src="/wp-content/uploads/2023/09/Guardian_Sun_Logo.png.webp" width={60} /></a> },
-          { label: "Cámara", value: "20 mm", tooltip: "Lo que mejor funciona es de mínimo 16 mm" },
-          { label: "Triple Vidrio", value: false, tooltip: "Mejora mucho el aislamiento" },
-          { label: "Intercalario Warm Edge", value: false, tooltip: "Mejora un 10% el aislamiento" },
-          { label: "Tratamiento Térmico", value: true, tooltip: "Mejora mucho el aislamiento" },
-          { label: "Tratamiento Solar", value: false, tooltip: "Filtra el calor producido por la radiación solar" },
-          { label: "Puertas y balconeras de seguridad", value: true, tooltip: "Evita daños por rotura y accidentes" },
-        ]
-      },
-      {
-        titulo: "INSTALACION",
-        items: [
-          { label: "Espuma de alta densidad", value: true, tooltip: "Mejora el aislamiento entre la ventana y el muro" },
-          { label: "Tapajuntas clipado de pvc", value: true, tooltip: "Permite aplicar mejor la espuma, no usamos tapajuntas de aluminio" },
-          { label: "Acabados de Paleteria", value: false },
-        ]
-      },
-      {
-        titulo: "GARANTIA",
-        items: [
-          { label: "Sello Aenor del Perfil", value: true },
-          { label: "Sello Aenor de la Ventana", value: true, tooltip: "Exclusivo sello aenor de la ventana acabada" },
-          { label: "10 años garantia color", value: true },
-        ]
-      },
-    ]
-  },
-  {
-    nombre: "EcoPrime 820",
-    descripcion: "La mejor opción en aislamiento y prestaciones.",
-    imagen: "/wp-content/uploads/2024/09/veka_82-1.png",
-    secciones: [
-      {
-        titulo: "Perfileria",
-        items: [
-          { label: "Marca", value: <a href="https://www.veka.es/"><img src="https://www.veka.es/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2020/03/logo-veka.png.webp" width={30} /></a> },
-          { label: "Color", value: "Blanco" },
-          { label: "Serie", value: <a href="https://www.veka.es/wp-content/uploads/2021/06/SOFTLINE-82_-CAST_web.pdf">EcoPrime 820</a> },
-          { label: "Marco", value: "82 mm" },
-          { label: "Triple Junta", value: true, tooltip: "Mejora la hermeticidad" },
-          { label: "Transmitancia térmica Uf", value: "1,0 W/m2 K", tooltip: "El número menor es el mayor aislamiento" },
-        ]
-      },
-      {
-        titulo: "VIDRIO",
-        items: [
-          { label: "Marca", value: <a href="https://www.guardiansun.es/"><img src="/wp-content/uploads/2023/09/Guardian_Sun_Logo.png.webp" width={60} /></a> },
-          { label: "Cámara", value: "20 mm", tooltip: "Lo que mejor funciona es de mínimo 16 mm" },
-          { label: "Triple Vidrio", value: true, tooltip: "Mejora mucho el aislamiento" },
-          { label: "Intercalario Warm Edge", value: true, tooltip: "Mejora un 10% el aislamiento" },
-          { label: "Tratamiento Térmico", value: true, tooltip: "Mejora mucho el aislamiento" },
-          { label: "Tratamiento Solar", value: true, tooltip: "Filtra el calor producido por la radiación solar" },
-          { label: "Puertas y balconeras de seguridad", value: true, tooltip: "Evita daños por rotura y accidentes" },
-        ]
-      },
-      {
-        titulo: "INSTALACION",
-        items: [
-          { label: "Espuma de alta densidad", value: true, tooltip: "Mejora el aislamiento entre la ventana y el muro" },
-          { label: "Tapajuntas clipado de pvc", value: true, tooltip: "Permite aplicar mejor la espuma, no usamos tapajuntas de aluminio" },
-          { label: "Acabados de Paleteria", value: false },
-        ]
-      },
-      {
-        titulo: "GARANTIA",
-        items: [
-          { label: "Sello Aenor del Perfil", value: true },
-          { label: "Sello Aenor de la Ventana", value: true, tooltip: "Exclusivo sello aenor de la ventana acabada" },
-          { label: "10 años garantia color", value: true },
-        ]
-      },
-    ]
-  },
-];
+// export const ventanasEjemplo: FichaVentanaProps[] = [...]
 
 // --- Tabla comparativa ---
 type CamposPorSeccion = Record<string, string[]>;
 
 function getComparativaData() {
   // Recolecta todas las secciones y campos únicos
-  const secciones = Array.from(new Set(ventanasEjemplo.flatMap(v => v.secciones.map(s => s.titulo))));
+  const secciones = Array.from(new Set(ventanasEjemplo.flatMap((v: FichaVentanaProps) => v.secciones.map((s: FichaSeccion) => s.titulo))));
   const camposPorSeccion: CamposPorSeccion = {};
   secciones.forEach((seccion: string) => {
     camposPorSeccion[seccion] = Array.from(new Set(
-      ventanasEjemplo.flatMap((v) => {
-        const sec = v.secciones.find((s) => s.titulo === seccion);
-        return sec ? sec.items.map((i) => i.label) : [];
+      ventanasEjemplo.flatMap((v: FichaVentanaProps) => {
+        const sec = v.secciones.find((s: FichaSeccion) => s.titulo === seccion);
+        return sec ? sec.items.map((i: FichaItem) => i.label) : [];
       })
     ));
   });
@@ -364,15 +214,15 @@ function getValorVentana(
   return item.value;
 }
 
-function safeT(t: any, key: string, defaultValue?: string) {
-  const result = t(key, defaultValue);
+function safeT(t: TFunction, key: string, defaultValue?: string) {
+  const result = t(key, { defaultValue });
   return typeof result === 'string' ? result : defaultValue || '';
 }
 
 function ComparativaVentanas() {
   const { t } = useTranslation();
   const { secciones, camposPorSeccion } = getComparativaData();
-  const nombres = ventanasEjemplo.map((v) => v.nombre);
+  const nombres = ventanasEjemplo.map((v: FichaVentanaProps) => v.nombre);
 
   return (
     <div className="mx-auto max-w-2xl px-2 pt-8 sm:pt-12 lg:max-w-7xl lg:px-8">
@@ -381,12 +231,12 @@ function ComparativaVentanas() {
           <caption className="sr-only">Comparativa de ventanas</caption>
           <colgroup>
             <col className="w-2/5 sm:w-2/5" />
-            {nombres.map((n, i) => <col key={i} className="w-1/5 sm:w-1/5" />)}
+            {nombres.map((n: string, i: number) => <col key={i} className="w-1/5 sm:w-1/5" />)}
           </colgroup>
           <thead>
             <tr>
               <td className="p-0" />
-              {ventanasEjemplo.map((ventana) => (
+              {ventanasEjemplo.map((ventana: FichaVentanaProps) => (
                 <th key={ventana.nombre} scope="col" className="p-0">
                   <div className="text-xs sm:text-sm font-semibold text-orange-600 text-center">
                     {safeT(t, `ventanas.${ventana.nombre}.nombre`, ventana.nombre)}
@@ -407,7 +257,7 @@ function ComparativaVentanas() {
                   <th className="px-1 py-2 sm:px-0 sm:py-4 text-xs sm:text-sm font-normal text-gray-600 max-w-[90px] truncate whitespace-nowrap overflow-hidden">
                     {safeT(t, `ventanas.campos.${campo}`, campo)}
                   </th>
-                  {ventanasEjemplo.map((ventana) => (
+                  {ventanasEjemplo.map((ventana: FichaVentanaProps) => (
                     <td key={ventana.nombre} className="p-1 sm:p-4 text-center align-middle">
                       <Valor value={getValorVentana(ventana, seccion, campo)} />
                     </td>
