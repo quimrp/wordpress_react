@@ -104,6 +104,9 @@
       "Espuma de alta densidad": "Mejora el aislamiento entre la ventana y el muro",
       "Tapajuntas clipado de pvc": "Permite aplicar mejor la espuma, no usamos tapajuntas de aluminio",
       "Sello Aenor de la Ventana": "Exclusivo sello aenor de la ventana acabada"
+    },
+    "colores": {
+      "blanco": "Blanco"
     }
   },
   "about": {

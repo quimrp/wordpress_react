@@ -104,6 +104,9 @@
       "Espuma de alta densidad": "Улучшает изоляцию между окном и стеной",
       "Tapajuntas clipado de pvc": "Позволяет лучшее применение пены, мы не используем алюминиевые профили",
       "Sello Aenor de la Ventana": "Эксклюзивная сертификация AENOR для готового окна"
+    },
+    "colores": {
+      "blanco": "Белый"
     }
   },
   "about": {

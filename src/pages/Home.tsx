@@ -6,16 +6,17 @@ import Features from '../components/Features';
 import AboutUs from '../components/AboutUs';
 import PriceTable from '../components/PriceTable';
 import FichaVentana from '../components/FichaVentana';
+import PresupuestoView from '../components/PresupuestoView';
 
 const Home: React.FC = () => {
   return (
     <Layout>
-      <Hero />
+        <Hero />
       <Features />
-      <TaiwindTest />
+        <TaiwindTest />
       <AboutUs />
-      <PriceTable />
       <FichaVentana />
+      <PresupuestoView />
     </Layout>
   );
 };

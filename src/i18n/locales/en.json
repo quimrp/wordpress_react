@@ -104,6 +104,9 @@
       "Espuma de alta densidad": "Improves insulation between window and wall",
       "Tapajuntas clipado de pvc": "Allows better foam application, we don't use aluminum covers",
       "Sello Aenor de la Ventana": "Exclusive AENOR seal for finished window"
+    },
+    "colores": {
+      "blanco": "White"
     }
   },
   "about": {

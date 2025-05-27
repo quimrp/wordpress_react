@@ -104,6 +104,9 @@
       "Espuma de alta densidad": "Millora l'aïllament entre la finestra i el mur",
       "Tapajuntas clipado de pvc": "Permet aplicar millor l'escuma, no utilitzem tapajuntes d'alumini",
       "Sello Aenor de la Ventana": "Exclusiu segell aenor de la finestra acabada"
+    },
+    "colores": {
+      "blanco": "Blanc"
     }
   },
   "about": {
