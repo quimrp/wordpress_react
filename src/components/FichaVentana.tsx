@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CheckIcon, XMarkIcon, InformationCircleIcon, StarIcon } from '@heroicons/react/24/outline';
 import type { TFunction } from 'i18next';
 import { ventanasEjemplo } from './ventanasEjemplo';
+import { createPortal } from 'react-dom';
 
 interface FichaItem {
   label: string;
@@ -23,12 +24,28 @@ interface FichaVentanaProps {
 }
 
 function Tooltip({ text }: { text: string }) {
+  const [show, setShow] = useState(false);
+  const [rect, setRect] = useState<DOMRect | null>(null);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  const handleMouseEnter = () => {
+    if (ref.current) setRect(ref.current.getBoundingClientRect());
+    setShow(true);
+  };
+  const handleMouseLeave = () => setShow(false);
+
   return (
-    <span className="relative group cursor-pointer">
+    <span
+      ref={ref}
+      className="relative cursor-pointer inline-flex items-center"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocus={handleMouseEnter}
+      onBlur={handleMouseLeave}
+      tabIndex={0}
+    >
       <InformationCircleIcon className="inline w-4 h-4 ml-1 text-gray-400" />
-      <span className="absolute left-1/2 z-10 hidden w-48 -translate-x-1/2 rounded bg-black px-2 py-1 text-xs text-white group-hover:block">
-        {text}
-      </span>
+      <TooltipPortal text={text} anchorRect={rect} show={show} />
     </span>
   );
 }
@@ -64,7 +81,7 @@ export default function FichaVentana(props: Partial<FichaVentanaProps>) {
           {t('ventanas.subtitulo')}
         </p>
         <div className="grid md:grid-cols-3 gap-8 w-full">
-          {ventanasEjemplo.map((ventana: FichaVentanaProps) => (
+          {ventanasEjemplo().map((ventana: FichaVentanaProps) => (
             <div key={ventana.nombre} className="px-2 flex flex-col">
               <div className="bg-white rounded-xl shadow-lg p-6 w-full mx-auto mb-8 flex flex-col h-full [&_a]:text-[var(--secondary-color)] [&_a:hover]:text-[var(--secondary-color-dark)] [&_a:hover]:underline">
                 <div
@@ -87,21 +104,23 @@ export default function FichaVentana(props: Partial<FichaVentanaProps>) {
                 <div className="flex justify-center mb-4">
                   <img src={ventana.imagen} alt={t(`ventanas.${ventana.nombre}.nombre`)} width={150} height={150} />
                 </div>
-                {Array.from(new Set(ventanasEjemplo.flatMap((v: FichaVentanaProps) => v.secciones.map((s: FichaSeccion) => s.titulo)))).map((titulo: string) => {
+                {Array.from(new Set(ventanasEjemplo().flatMap((v: FichaVentanaProps) => v.secciones.map((s: FichaSeccion) => s.titulo)))).map((titulo: string) => {
                   const sec = ventana.secciones.find((s: FichaSeccion) => s.titulo === titulo);
                   return (
                     <div key={titulo} className="mb-4 flex-1 flex flex-col">
                       <div className="bg-orange-400 text-white text-center font-semibold py-2 rounded mb-2">{t(`ventanas.secciones.${titulo}`)}</div>
                       {sec ? (
-                        <table className="w-full h-full">
+                        <table className="w-full h-full table-fixed">
                           <tbody>
                             {sec.items.map((item: FichaItem) => (
-                              <tr key={item.label} className="border-b last:border-none">
-                                <td className="py-2 font-medium">
-                                  {t(`ventanas.campos.${item.label}`)}
-                                  {item.tooltip && <Tooltip text={t(`ventanas.tooltips.${item.label}`, item.tooltip)} />}
+                              <tr key={item.label} className="border-b last:border-none h-auto">
+                                <td className="py-2 font-medium align-middle">
+                                  <span className="inline-flex items-center">
+                                    {t(`ventanas.campos.${item.label}`)}
+                                    {item.tooltip && <Tooltip text={t(`ventanas.tooltips.${item.label}`, item.tooltip)} />}
+                                  </span>
                                 </td>
-                                <td className="py-2 text-right">
+                                <td className="py-2 text-right align-middle">
                                   <Valor value={item.value} />
                                 </td>
                               </tr>
@@ -154,21 +173,19 @@ export default function FichaVentana(props: Partial<FichaVentanaProps>) {
       {secciones.map(sec => (
         <div key={sec.titulo} className="mb-4">
           <div className="bg-orange-400 text-white text-center font-semibold py-2 rounded mb-2">{t(`ventanas.secciones.${sec.titulo}`)}</div>
-          <table className="w-full">
-            <tbody>
-              {sec.items.map((item, idx) => (
-                <tr key={idx} className="border-b last:border-none">
-                  <td className="py-2 font-medium">
-                    {t(`ventanas.campos.${item.label}`)}
-                    {item.tooltip && <Tooltip text={t(`ventanas.tooltips.${item.label}`, item.tooltip)} />}
-                  </td>
-                  <td className="py-2 text-right">
-                    <Valor value={item.value} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="w-full">
+            {sec.items.map((item, idx) => (
+              <div key={idx} className="grid grid-cols-2 border-b last:border-none">
+                <div className="py-2 font-medium flex items-center">
+                  {t(`ventanas.campos.${item.label}`)}
+                  {item.tooltip && <Tooltip text={t(`ventanas.tooltips.${item.label}`, item.tooltip)} />}
+                </div>
+                <div className="py-2 text-right flex items-center justify-end">
+                  <Valor value={item.value} />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       ))}
       <div className="text-center mt-4">
@@ -189,11 +206,11 @@ type CamposPorSeccion = Record<string, string[]>;
 
 function getComparativaData() {
   // Recolecta todas las secciones y campos únicos
-  const secciones = Array.from(new Set(ventanasEjemplo.flatMap((v: FichaVentanaProps) => v.secciones.map((s: FichaSeccion) => s.titulo))));
+  const secciones = Array.from(new Set(ventanasEjemplo().flatMap((v: FichaVentanaProps) => v.secciones.map((s: FichaSeccion) => s.titulo))));
   const camposPorSeccion: CamposPorSeccion = {};
   secciones.forEach((seccion: string) => {
     camposPorSeccion[seccion] = Array.from(new Set(
-      ventanasEjemplo.flatMap((v: FichaVentanaProps) => {
+      ventanasEjemplo().flatMap((v: FichaVentanaProps) => {
         const sec = v.secciones.find((s: FichaSeccion) => s.titulo === seccion);
         return sec ? sec.items.map((i: FichaItem) => i.label) : [];
       })
@@ -222,7 +239,7 @@ function safeT(t: TFunction, key: string, defaultValue?: string) {
 function ComparativaVentanas() {
   const { t } = useTranslation();
   const { secciones, camposPorSeccion } = getComparativaData();
-  const nombres = ventanasEjemplo.map((v: FichaVentanaProps) => v.nombre);
+  const nombres = ventanasEjemplo().map((v: FichaVentanaProps) => v.nombre);
 
   return (
     <div className="mx-auto max-w-2xl px-2 pt-8 sm:pt-12 lg:max-w-7xl lg:px-8">
@@ -236,7 +253,7 @@ function ComparativaVentanas() {
           <thead>
             <tr>
               <td className="p-0" />
-              {ventanasEjemplo.map((ventana: FichaVentanaProps) => (
+              {ventanasEjemplo().map((ventana: FichaVentanaProps) => (
                 <th key={ventana.nombre} scope="col" className="p-0">
                   <div className="text-xs sm:text-sm font-semibold text-orange-600 text-center">
                     {safeT(t, `ventanas.${ventana.nombre}.nombre`, ventana.nombre)}
@@ -249,25 +266,108 @@ function ComparativaVentanas() {
             <tbody key={seccion} className="group">
               <tr>
                 <th colSpan={nombres.length + 1} className="px-0 pt-6 pb-0 group-first-of-type:pt-3">
-                  <div className={`-mx-2 rounded-lg px-2 py-2 text-xs sm:text-sm font-semibold ${seccion === 'VIDRIO' ? 'bg-orange-400 text-center text-white' : 'bg-gray-50 text-gray-950'}`}>{safeT(t, `ventanas.secciones.${seccion}`, seccion)}</div>
+                  <div className={`-mx-2 rounded-lg px-4 py-3 text-xs sm:text-sm font-semibold bg-gray-100 text-left text-gray-950`}>{safeT(t, `ventanas.secciones.${seccion}`, seccion)}</div>
                 </th>
               </tr>
-              {camposPorSeccion[seccion].map((campo) => (
-                <tr key={campo} className="border-b border-gray-100 last:border-none">
-                  <th className="px-1 py-2 sm:px-0 sm:py-4 text-xs sm:text-sm font-normal text-gray-600 max-w-[90px] truncate whitespace-nowrap overflow-hidden">
-                    {safeT(t, `ventanas.campos.${campo}`, campo)}
-                  </th>
-                  {ventanasEjemplo.map((ventana: FichaVentanaProps) => (
-                    <td key={ventana.nombre} className="p-1 sm:p-4 text-center align-middle">
-                      <Valor value={getValorVentana(ventana, seccion, campo)} />
-                    </td>
-                  ))}
-                </tr>
-              ))}
+              {camposPorSeccion[seccion].map((campo) => {
+                // Buscar si alguna ventana tiene tooltip para este campo en esta sección
+                const tooltip = ventanasEjemplo().map((v) => {
+                  const sec = v.secciones.find((s) => s.titulo === seccion);
+                  if (!sec) return undefined;
+                  const item = sec.items.find((i) => i.label === campo);
+                  return item && item.tooltip;
+                }).find(Boolean);
+                return (
+                  <tr key={campo} className="border-b border-gray-100 last:border-none">
+                    <th className="px-1 py-2 sm:px-0 sm:py-4 text-xs sm:text-sm font-normal text-gray-600 max-w-[90px] truncate whitespace-nowrap overflow-hidden">
+                      <ValorConTooltip label={safeT(t, `ventanas.campos.${campo}`, campo)} tooltip={tooltip ? t(`ventanas.tooltips.${campo}`, tooltip) : undefined}>
+                        {safeT(t, `ventanas.campos.${campo}`, campo)}
+                      </ValorConTooltip>
+                    </th>
+                    {ventanasEjemplo().map((ventana: FichaVentanaProps) => (
+                      <td key={ventana.nombre} className="p-1 sm:p-4 text-center align-middle">
+                        <Valor value={getValorVentana(ventana, seccion, campo)} />
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
             </tbody>
           ))}
         </table>
       </div>
     </div>
   );
-} 
+}
+
+interface TooltipPortalProps {
+  text: string;
+  anchorRect: DOMRect | null;
+  show: boolean;
+}
+
+function TooltipPortal({ text, anchorRect, show }: TooltipPortalProps) {
+  if (!show || !anchorRect) return null;
+  return createPortal(
+    <div
+      className="fixed z-[9999] bg-black text-white text-xs px-2 py-1 rounded shadow-lg pointer-events-none"
+      style={{
+        left: anchorRect.left + anchorRect.width / 2,
+        top: anchorRect.top - 8, // aparece encima
+        transform: 'translateX(-50%) translateY(-100%)',
+      }}
+    >
+      {text}
+    </div>,
+    document.body
+  );
+}
+
+interface ValorConTooltipProps {
+  label: string;
+  tooltip?: string;
+  children: React.ReactNode;
+}
+
+function ValorConTooltip({ label, tooltip, children }: ValorConTooltipProps) {
+  const [show, setShow] = useState(false);
+  const [rect, setRect] = useState<DOMRect | null>(null);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  const handleMouseEnter = () => {
+    if (ref.current) setRect(ref.current.getBoundingClientRect());
+    setShow(true);
+  };
+  const handleMouseLeave = () => setShow(false);
+
+  return (
+    <span
+      ref={ref}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocus={handleMouseEnter}
+      onBlur={handleMouseLeave}
+      tabIndex={tooltip ? 0 : -1}
+      className="relative cursor-pointer inline-flex items-center"
+      aria-label={label}
+    >
+      {children}
+      {tooltip && (
+        <InformationCircleIcon className="inline w-4 h-4 ml-1 text-gray-400" />
+      )}
+      <TooltipPortal text={tooltip || ''} anchorRect={rect} show={show && !!tooltip} />
+    </span>
+  );
+}
+
+<style>
+{`
+.custom-tooltip {
+  @apply absolute left-1/2 z-10 hidden w-48 -translate-x-1/2 rounded bg-black px-2 py-1 text-xs text-white;
+}
+.relative.cursor-pointer:hover .custom-tooltip,
+.relative.cursor-pointer:focus .custom-tooltip {
+  display: block;
+}
+`}
+</style> 
