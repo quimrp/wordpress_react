@@ -25,27 +25,19 @@ interface FichaVentanaProps {
 
 function Tooltip({ text }: { text: string }) {
   const [show, setShow] = useState(false);
-  const [rect, setRect] = useState<DOMRect | null>(null);
-  const ref = useRef<HTMLSpanElement>(null);
-
-  const handleMouseEnter = () => {
-    if (ref.current) setRect(ref.current.getBoundingClientRect());
-    setShow(true);
-  };
-  const handleMouseLeave = () => setShow(false);
-
   return (
     <span
-      ref={ref}
-      className="relative cursor-pointer inline-flex items-center"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onFocus={handleMouseEnter}
-      onBlur={handleMouseLeave}
+      className="relative cursor-pointer"
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
+      onFocus={() => setShow(true)}
+      onBlur={() => setShow(false)}
       tabIndex={0}
     >
       <InformationCircleIcon className="inline w-4 h-4 ml-1 text-gray-400" />
-      <TooltipPortal text={text} anchorRect={rect} show={show} />
+      <div className="tooltip absolute top-full left-1/2 -translate-x-1/2 mt-1 z-[9999] bg-black text-white text-sm px-2 py-1 rounded shadow-lg hidden">
+        {text}
+      </div>
     </span>
   );
 }
@@ -110,17 +102,15 @@ export default function FichaVentana(props: Partial<FichaVentanaProps>) {
                     <div key={titulo} className="mb-4 flex-1 flex flex-col">
                       <div className="bg-orange-400 text-white text-center font-semibold py-2 rounded mb-2">{t(`ventanas.secciones.${titulo}`)}</div>
                       {sec ? (
-                        <table className="w-full h-full table-fixed">
+                        <table className="w-full h-full">
                           <tbody>
                             {sec.items.map((item: FichaItem) => (
-                              <tr key={item.label} className="border-b last:border-none h-auto">
-                                <td className="py-2 font-medium align-middle">
-                                  <span className="inline-flex items-center">
-                                    {t(`ventanas.campos.${item.label}`)}
-                                    {item.tooltip && <Tooltip text={t(`ventanas.tooltips.${item.label}`, item.tooltip)} />}
-                                  </span>
+                              <tr key={item.label} className="border-b last:border-none">
+                                <td className="py-2 font-medium">
+                                  {t(`ventanas.campos.${item.label}`)}
+                                  {item.tooltip && <Tooltip text={t(`ventanas.tooltips.${item.label}`, item.tooltip)} />}
                                 </td>
-                                <td className="py-2 text-right align-middle">
+                                <td className="py-2 text-right">
                                   <Valor value={item.value} />
                                 </td>
                               </tr>
